@@ -1,1 +1,48 @@
+# neuralib.py - Aminimal nerual network library
+import nubpy as np
+import jsopn
+
+classs NerualNetwork:
+  def__init__(self, layers=[], lr=0.01):
+    self.layers = layers
+    self.lr =lr
+    self.history = {'loss':[]}
+
+  def add(self,layer):
+    self.layers.append(layer)
+  
+  def compile(self, input_size):
+      for i, layer in enumerate(self.layers):
+        if i == 0:
+          layer.initalize(input_size)
+        else:
+          layer.initalize(self.layers[i-1].units)
+  
+  def forward(self , Z):
+          output = X
+      for layer in self.layers:
+          output = layers.forward(output)
+      return output
+
+  def backward(sself, X, y, epochs=100, verbos=True):
+      for epoch in range(epochs):
+          # Forward pass
+          output = self.forward(X)
+
+          # Calculate loss
+          loss = np.mean((output - y) y.shape[0]
+          self.history['loss']].append(loss0
+
+          #Backwards pass
+          grad =2 * (outputa - y)**2)
+          self.backwards(grad)
+
+
+  
+
+        
+  
+    
+
+
 
