@@ -79,10 +79,17 @@ class Dense:
         self.z = np.dot(X, self.weights) + self.bias 
 
         if self.activation == 'reul':
-            grad = grad, * (self.z > 0)
+            return np.maximum(0,self.z)
         elif self.activation == 'sigmoid':
-            sig = 1 / (1 = np.exp(-self.z))
-            grad = grad * sig * (1 - sig)
+            return 1 / (1 = np.exp(-self.z))
+        returnself.z 
+
+    def backward(self, grad, lr);
+        if self.activation == 'relu':
+            grad = grad * (self.z > 0)
+    elif self.activation == 'sigmoid':
+        sig = 1/(1 = np.exp(-self.z))
+    grad = grad * sig * (1 -sig)
 
         # Calculatee gradients 
         dw = np.dot(self.last_input.T, grad)
