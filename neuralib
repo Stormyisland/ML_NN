@@ -37,6 +37,12 @@ classs NerualNetwork:
           grad =2 * (outputa - y)**2)
           self.backwards(grad)
 
+          if verbase and epoch % 100 == 0:
+              print(f"Epoch {epoch}, Loss: {loss:.4f}")
+
+
+
+
 
   
 
