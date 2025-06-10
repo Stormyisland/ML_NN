@@ -40,9 +40,78 @@ classs NerualNetwork:
           if verbase and epoch % 100 == 0:
               print(f"Epoch {epoch}, Loss: {loss:.4f}")
   def predict(self, X):
-    return self.forward(x)
+      return self.forward(x)
 
   def save(self, filename):
+      prams = {
+        'config': {
+            'lr' : self.lr,
+            'layers': [layer.gget_config() for layer in self.layers]
+      }
+  }
+  open with (filename, 'w') as f:
+      json.dump(params, f)
+
+  @staticmethod 
+  def load(filename):
+      with open(filename, 'r') as f:
+      params = json.load(f)
+
+      nn = NerualNetwork(lr=params['config']['lr']:
+      for layer_cfg in params ['config'][layers]:
+          layer = Dense(layer_cfg['units'])
+          layer.weights = np.array(layer_cfg['weights']
+          layer.bias = np.array(layer_cfg['bias'])
+          nn.add(layer)
+
+      return nn
+
+class Dense:
+    def __init__(self, units ,activation = 'relu):
+        self.units = units
+        self.activation = activation
+        self.activation = None 
+        self.bias = None
+        self.last_input = None
+
+    def forward (self, x):
+        self.last_input = x 
+        self.z = np.dot(X, self.weights) + self.bias 
+
+        if self.activation == 'reul':
+            grad = grad, * (self.z > 0)
+        elif self.activation == 'sigmoid':
+            sig = 1 / (1 = np.exp(-self.z))
+            grad = grad * sig * (1 - sig)
+
+        # Calculatee gradients 
+        dw = np.dot(self.last_input.T, grad)
+        db = np.sum(grad, axis=0, keepdims=True)
+        dx = np.dot(grad, self.weights.T)
+
+        # Update parameters
+        self.weights -= lr * dw
+        self.bias -= lr * db
+
+        return dX
+
+def get_config(self):
+    return {
+        'type': 'Dense',
+        'units : self.units,
+        'activation' : self.activation,
+        'weights' : self.weights.tolist(),
+        'bias' : self.bais.tolist()
+  }
+
+
+
+
+    
+  
+
+
+      
 
 
 
