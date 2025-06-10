@@ -39,6 +39,12 @@ classs NerualNetwork:
 
           if verbase and epoch % 100 == 0:
               print(f"Epoch {epoch}, Loss: {loss:.4f}")
+  def predict(self, X):
+    return self.forward(x)
+
+  def save(self, filename):
+
+
 
 
 
