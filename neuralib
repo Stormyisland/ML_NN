@@ -1,8 +1,8 @@
 # neuralib.py - Aminimal nerual network library
-import nubpy as np
-import jsopn
+import numpy as np
+import json
 
-classs NerualNetwork:
+class NerualNetwork:
   def__init__(self, layers=[], lr=0.01):
     self.layers = layers
     self.lr =lr
@@ -108,7 +108,7 @@ def get_config(self):
         'units : self.units,
         'activation' : self.activation,
         'weights' : self.weights.tolist(),
-        'bias' : self.bais.tolist()
+        'bias' : self.bias.tolist()
   }
 
 
