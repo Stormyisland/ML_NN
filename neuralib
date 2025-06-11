@@ -46,7 +46,7 @@ class NerualNetwork:
       prams = {
         'config': {
             'lr' : self.lr,
-            'layers': [layer.gget_config() for layer in self.layers]
+            'layers': [layer.get_config() for layer in self.layers]
       }
   }
   open with (filename, 'w') as f:
@@ -67,7 +67,7 @@ class NerualNetwork:
       return nn
 
 class Dense:
-    def __init__(self, units ,activation = 'relu):
+    def __init__(self, units, activation = 'relu'):
         self.units = units
         self.activation = activation
         self.activation = None 
@@ -79,10 +79,10 @@ class Dense:
         self.z = np.dot(X, self.weights) + self.bias 
 
         if self.activation == 'reul':
-            return np.maximum(0,self.z)
+            return np.maximum(0, self.z)
         elif self.activation == 'sigmoid':
             return 1 / (1 = np.exp(-self.z))
-        returnself.z 
+        return self.z 
 
     def backward(self, grad, lr);
         if self.activation == 'relu':
@@ -91,7 +91,7 @@ class Dense:
         sig = 1/(1 = np.exp(-self.z))
     grad = grad * sig * (1 -sig)
 
-        # Calculatee gradients 
+        # Calculate gradients 
         dw = np.dot(self.last_input.T, grad)
         db = np.sum(grad, axis=0, keepdims=True)
         dx = np.dot(grad, self.weights.T)
