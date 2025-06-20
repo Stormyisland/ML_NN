@@ -4,10 +4,10 @@ import json
 class NerualNetwork:
   def__init__(self, layers=[], lr=0.01):
     self.layers = layers
-    self.lr =lr
+    self.lr = lr
     self.history = {'loss':[]}
 
-  def add(self,layer):
+  def add(self, layer):
     self.layers.append(layer)
   
   def compile(self, input_size):
@@ -17,20 +17,20 @@ class NerualNetwork:
         else:
           layer.initalize(self.layers[i-1].units)
   
-  def forward(self , Z):
+  def forward(self, Z):
           output = X
       for layer in self.layers:
           output = layers.forward(output)
       return output
 
-  def backward(sself, X, y, epochs=100, verbos=True):
+  def backward(self, X, y, epochs=100, verbos=True):
       for epoch in range(epochs):
           # Forward pass
           output = self.forward(X)
 
           # Calculate loss
           loss = np.mean((output - y) y.shape[0]
-          self.history['loss']].append(loss0
+          self.history['loss']].append(loss)
 
           #Backwards pass
           grad =2 * (outputa - y)**2)
@@ -42,7 +42,7 @@ class NerualNetwork:
       return self.forward(x)
 
   def save(self, filename):
-      prams = {
+      params = {
         'config': {
             'lr' : self.lr,
             'layers': [layer.get_config() for layer in self.layers]
@@ -110,7 +110,7 @@ def get_config(self):
         'bias' : self.bias.tolist()
   }
 
-# neuralib.py - Aminimal nerual network library
+# neuralib.py - A minimal nerual network library
 
 
     
